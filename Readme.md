@@ -1,4 +1,5 @@
 Link to GitHub: [https://github.com/krumIO/jenkins-slave-polymer](https://github.com/krumIO/jenkins-slave-polymer)
+
 Link to Dockerhub: [https://store.docker.com/community/images/krumware/jenkins-slave-polymer](https://store.docker.com/community/images/krumware/jenkins-slave-polymer)
 
 # Jenkins swarm slave preconfigured for Polymer-CLI
@@ -32,8 +33,7 @@ Resources
 
 To run a Docker container passing [any parameters](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions) to the slave
 
-It is recommended that a label be specified for ease of selection in your pipeline.
-jenkins:jenkins is used here for an example password combination. 
+It is recommended that a label be specified for ease of selection in your pipeline. `jenkins:jenkins` is used here for an example password combination. 
 
 The base image attempts to connect to http://jenkins:8080 by default.
 
