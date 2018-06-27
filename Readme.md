@@ -11,13 +11,14 @@ Pre-installed:
  - NodeJS 8
  - NPM 4
  - Bower
+ - Gulp 4 (with cli)
  - Polymer-CLI (latest)
  - Chrome (latest)
+ - Firefox (extended support version)
  - OpenJDK
  - XVFB
 
 Not yet installed:
- - Firefox
 
 This image requires a Jenkins instance with [Swarm Plugin](https://wiki.jenkins.io/display/JENKINS/Swarm+Plugin) installed.
 
