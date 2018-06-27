@@ -34,11 +34,16 @@ To run a Docker container passing [any parameters](https://wiki.jenkins-ci.org/d
 It is recommended that a label be specified for ease of selection in your pipeline.
 jenkins:jenkins is used here for an example password combination. 
 
-Run with direct connection to a Jenkins master:
- - docker run krumware/jenkins-slave-polymer -master http://jenkins:8080 **-username** jenkins **-password** jenkins **-executors** 1 **-labels** polymer
+The base image attempts to connect to http://jenkins:8080 by default.
+
+Run with direct connection to a Jenkins master not located at the default address:
+ - docker run krumware/jenkins-slave-polymer -master http://other-jenkins:8080 **-username** jenkins **-password** jenkins **-executors** 1 **-labels** polymer
 
 Run in a service stack with linking to the Jenkins master container
- - docker run -d --link jenkins:jenkins krumware/jenkins-slave-polymer **-username** jenkins **-password** jenkins -executors 1 **-labels** polymer
+ - docker run --link jenkins:jenkins krumware/jenkins-slave-polymer **-username** jenkins **-password** jenkins -executors 1 **-labels** polymer
+
+## Troubleshooting
+ - Currently, it looks like the base image sometimes has trouble in stack configurations where environmental variables are designated.  You can get around this by passing cmd line args as the `command`. For example: `-username jenkins -password jenkins -executors 1 -labels polymer`
 
 
 # Building
