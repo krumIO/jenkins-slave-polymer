@@ -32,4 +32,13 @@ RUN mv /usr/bin/google-chrome /usr/bin/google-chrome-orig \
     && echo '/usr/bin/google-chrome-orig --no-sandbox --disable-setuid-sandbox --allow-sandbox-debugging "$@"' >> /usr/bin/google-chrome  \
     && chmod +x /usr/bin/google-chrome
 
+RUN groupadd docker && usermod -aG docker jenkins-slave
+# RUN apt-get install sudo -y && usermod -aG sudo jenkins-slave
+
+ENV DOCKERVERSION=18.03.1-ce
+RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-18.03.1-ce.tgz \
+  && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
+                 -C /usr/local/bin docker/docker \
+  && rm docker-${DOCKERVERSION}.tgz
+
 USER jenkins-slave
