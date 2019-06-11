@@ -23,8 +23,7 @@ RUN apt update \
 RUN npm install -g npm@4 
 
 # install Polymer cli (with web-component-tester) & bower globally, keep gulp for fancy tasks.
-RUN npm install -g gulpjs/gulp#4.0 gulp-cli bower polymer-cli
-RUN echo '{ "allow_root": true }' > /root/.bowerrc
+RUN npm install -g gulp-cli gulp bower polymer-cli && echo '{ "allow_root": true }' > /root/.bowerrc
 
 #try to fool google-chrome to run without sandbox - from https://github.com/printminion/polymer-tester
 RUN mv /usr/bin/google-chrome /usr/bin/google-chrome-orig \
