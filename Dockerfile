@@ -28,7 +28,7 @@ RUN npm install -g gulp-cli gulp bower polymer-cli && echo '{ "allow_root": true
 #try to fool google-chrome to run without sandbox - from https://github.com/printminion/polymer-tester
 RUN mv /usr/bin/google-chrome /usr/bin/google-chrome-orig \
     && echo '#!/bin/bash' > /usr/bin/google-chrome \
-    && echo '/usr/bin/google-chrome-orig --no-sandbox --disable-setuid-sandbox --allow-sandbox-debugging "$@"' >> /usr/bin/google-chrome  \
+    && echo '/usr/bin/google-chrome-orig --no-sandbox --disable-gpu --disable-setuid-sandbox --allow-sandbox-debugging "$@"' >> /usr/bin/google-chrome  \
     && chmod +x /usr/bin/google-chrome
 
 USER jenkins-slave
