@@ -16,8 +16,7 @@ RUN apt update \
     build-essential \
     google-chrome-stable \
     libgconf-2-4 \
-    xvfb \
-    firefox-esr
+    xvfb
 
 #Roll back to npm 4 for certain polymer-cli version issues. This should no longer be necessary
 RUN npm install -g npm@4 
