@@ -1,7 +1,8 @@
  # This is DEBIAN
-FROM csanchez/jenkins-swarm-slave:latest
+FROM openjdk:8-jdk
 
-USER root
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
 
 # add NodeJS and Chrome sources
 RUN apt-get install -y curl \
@@ -19,7 +20,6 @@ RUN apt update \
     xvfb \
     firefox-esr
 
-#Roll back to npm 4 for certain polymer-cli version issues. This should no longer be necessary
 RUN npm install -g npm 
 
 # install Polymer cli (with web-component-tester) & bower globally, keep gulp for fancy tasks. keep bower for the time being. (you shouldn't be using it)
@@ -31,4 +31,4 @@ RUN mv /usr/bin/google-chrome /usr/bin/google-chrome-orig \
     && echo '/usr/bin/google-chrome-orig --no-sandbox --disable-setuid-sandbox --allow-sandbox-debugging "$@"' >> /usr/bin/google-chrome  \
     && chmod +x /usr/bin/google-chrome
 
-USER jenkins-slave
+RUN apt-get install -y git
