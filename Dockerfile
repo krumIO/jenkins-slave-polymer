@@ -25,10 +25,10 @@ RUN apt update \
     firefox-esr
 
 #Roll back to npm 4 for certain polymer-cli version issues. This should no longer be necessary
-RUN npm install -g npm@4 
+RUN npm install -g npm@4
 
 # install Polymer cli (with web-component-tester) & bower globally, keep gulp for fancy tasks.
-RUN npm install -g gulpjs/gulp#4.0 gulp-cli bower polymer-cli
+RUN npm install -g gulp gulp-cli bower polymer-cli
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
 #try to fool google-chrome to run without sandbox - from https://github.com/printminion/polymer-tester
