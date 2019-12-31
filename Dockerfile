@@ -12,7 +12,12 @@ RUN apt-get install -y curl \
 # install packages
 RUN apt update \
     && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
     nodejs \
+    software-properties-common \
     build-essential \
     google-chrome-stable \
     libgconf-2-4 \
@@ -40,5 +45,7 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-18
   && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
+  && curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
+  && chmod +x /usr/local/bin/docker-compose
 
 USER jenkins-slave
