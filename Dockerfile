@@ -3,10 +3,15 @@ FROM csanchez/jenkins-swarm-slave:latest
 
 USER root
 
+# add NodeJS and Chrome sources	
+RUN apt-get install -y curl \	
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash -
+
 # install packages
 RUN apt update \
     && apt-get install -y \
-    && apt-get install -y curl
+    && apt-get install -y curl \
+    && apt-get install -y nodejs
 
 RUN groupadd docker
 # RUN apt-get install sudo -y && usermod -aG sudo jenkins-slave
