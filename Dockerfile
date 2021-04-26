@@ -1,5 +1,5 @@
  # This is DEBIAN
-FROM csanchez/jenkins-swarm-slave:latest
+FROM krumware/jenkins-swarm-slave-docker:3.25
 
 USER root
 
